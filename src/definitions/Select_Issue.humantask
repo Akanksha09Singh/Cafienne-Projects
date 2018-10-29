@@ -1,0 +1,55 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="Select_Issue" description="Select_Issue" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <output id="_XAyB_Issue" name="Issue"/>
+        <input id="_MHCu_User" name="User"/>
+        <task-model>{
+  "schema": {
+    "title": "User",
+    "type": "object",
+    "required":[ 
+      "Services"
+    ],
+    "properties": {
+      "User": {
+        "title": "User Details",
+        "type": "object",
+        "properties": {
+         "UserName": {
+           "type": "string",
+           "description": "User Name"
+         },
+          "PhoneNumber": {
+            "type": "string",
+            "description": "Phone Number"
+         }
+          
+        }
+      },
+      "Issue":{
+      "title": "Issue Type",
+        "type": "object",
+        "properties": {
+          "IssueName": {
+            "title": "Service Type",
+            "type": "string",
+            "enumNames": [
+              "Network",
+              "Mobile",
+              "DTH"],
+            "enum": [
+              "Landline",
+              "Mobile",
+              "DTH"]
+          },
+          "Description": {
+            "type": "string",
+            "description": "Enter your issue description"
+         }
+        }
+      }
+    }
+  }
+}
+</task-model>
+    </cafienne:implementation>
+</humantask>

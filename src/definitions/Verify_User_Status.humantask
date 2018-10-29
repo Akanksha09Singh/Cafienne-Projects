@@ -1,0 +1,30 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="Verify_User_Status" description="Verify_User_Status" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <output id="_kFO8_Message" name="Message"/>
+        <input id="_kM8H_Assignee" name="Assignee"/>
+        <task-model>{
+	"schema": {
+		"title": "User",
+		"type": "object",
+		"required": [
+			"Message"
+		],
+		"properties": {
+			"Message": {
+				"title": "Message",
+				"type": "object",
+				"properties": {
+					"MessageContent": {
+						"type": "string",
+						"title": "MessageContent"
+						
+					}
+
+				}
+			}
+		}
+	}
+
+}</task-model>
+    </cafienne:implementation>
+</humantask>

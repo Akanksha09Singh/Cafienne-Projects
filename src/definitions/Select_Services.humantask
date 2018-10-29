@@ -1,0 +1,53 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="Select_Services" description="Select_Services" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_87IV_User" name="User"/>
+        <output id="_Z7nw_Services" name="Services"/>
+        <output id="_PTmm_User" name="User"/>
+        <input id="_aOer_Assignee" name="Assignee"/>
+        <task-model>{
+  "schema": {
+    "title": "User",
+    "type": "object",
+    "required":[ 
+      "Services"
+    ],
+    "properties": {
+      "User": {
+        "title": "User Details",
+        "type": "object",
+        "properties": {
+         "UserName": {
+           "type": "string",
+           "description": "User Name"
+         },
+          "PhoneNumber": {
+            "type": "string",
+            "description": "Phone Number"
+         }
+          
+        }
+      },
+      "Services":{
+      "title": "Services Type",
+        "type": "object",
+        "properties": {
+          "Type": {
+            "title": "Service Type",
+            "type": "string",
+            "enumNames": [
+              "Landline",
+              "Mobile",
+              "DTH"],
+            "enum": [
+              "Landline",
+              "Mobile",
+              "DTH"]
+          }
+        }
+      }
+    }
+  }
+}
+</task-model>
+    </cafienne:implementation>
+</humantask>

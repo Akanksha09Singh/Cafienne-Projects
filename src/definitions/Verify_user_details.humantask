@@ -1,0 +1,47 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="Verify_user_details" description="Verify_user_details" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_U13A_User" name="User"/>
+        <output id="_2eH4_UserResponse" name="Verification_Response"/>
+        <output id="_Pmex_User" name="User"/>
+        <input id="_QWEl_Assignee" name="Assignee"/>
+        <task-model>{ "schema":{
+        "title": "User",
+        "type": "object",
+        "properties":{
+          "User": {
+			"title": "User",
+			"type": "object",
+			"properties": {
+				"UserName": {
+					"type": "string",
+					"title": "Enter user name"
+				},
+				"PhoneNumber": {
+					"type": "string",
+					"title": "Enter phoneNo"
+				}
+			}
+          },
+   
+
+
+"Verification_Response": {
+        "title": "Verification Response Status",
+        "type": "object",
+        "properties": {
+          "Status": {
+            "title": "Enter the status",
+            "type": "string",
+            "enum": [
+              "Valid",
+              "Invalid"
+            ]
+          }
+        }
+      }
+      }
+}
+}
+</task-model>
+    </cafienne:implementation>
+</humantask>

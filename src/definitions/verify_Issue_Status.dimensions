@@ -1,0 +1,11 @@
+<CMMNDI>
+    <CMMNDiagram>
+        <CMMNShape cmmnElementRef="cm__ftZ0K_0" name="verify_Issue_Status">
+            <Bounds x="10" y="10" width="569" height="785"/>
+        </CMMNShape>
+    </CMMNDiagram>
+    <validation>
+        <hiddennotices/>
+        <hiddenproblems/>
+    </validation>
+</CMMNDI>

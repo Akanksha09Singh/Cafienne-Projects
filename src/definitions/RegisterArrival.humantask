@@ -1,0 +1,73 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="RegisterArrival" description="Register Arrival" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_kgVX_Register_Arrival" name="Register_Arrival"/>
+        <output id="_whwf_Arrival_Status" name="Arrival_Status"/>
+        <input id="_L2bN_Assignee" name="Assignee"/>
+        <output id="_t5x8_Register_Arrival" name="Register_Arrival"/>
+        <input id="_M7tB_Arrival_Status" name="Arrival_Status"/>
+        <task-model>{
+  "schema":{
+    "title": "Register Arrival",
+    "type": "object",
+   
+    "properties":{
+      "Register_Arrival":{
+        "title": "Register_Arrival",
+        "type": "object",
+        "properties":{
+          "Truck_Number":{
+            "title": "Truck_Number",
+            "type": "string",
+            "description": "Truck Number"
+          },
+          "Driver_Name": {
+            "title": "Driver_Name",
+            "type": "string",
+            "description": "Driver Name"
+          },
+           "Driver_ID":{
+            "title": "Driver_ID",
+            "type": "string",
+            "description": "Driver ID"
+          },
+           "Driver_Details":{
+            "title": "Driver_Details",
+            "type": "string",
+            "description": "Driver Details"
+          },
+           "Supplier_Name":{
+            "title": "Supplier_Name",
+            "type": "string",
+            "enumNames":[
+              "lana",
+              "Suzy",
+              "Admin"
+            ],
+            "enum":[
+              "lana",
+              "Suzy",
+              "Admin"
+            ]
+          }
+          }
+      },
+         "Arrival_Status":{
+        "title": "Arrival_Status",
+        "type": "object",
+        "properties":{
+          "Arrival_Status":{
+            "title": "Enter the Arrival status",
+            "type": "string",
+            "enum":[
+              "Registered",
+              "Accepted",
+              "Returned"
+            ]
+          }
+        }
+      }
+    }
+  }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

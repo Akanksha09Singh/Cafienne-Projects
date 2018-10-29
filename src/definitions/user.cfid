@@ -1,0 +1,4 @@
+<caseFileItemDefinition name="user" definitionType="http://www.omg.org/spec/CMMN/DefinitionType/Unspecified">
+    <property name="UserName" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+    <property name="PhoneNumber" type="http://www.omg.org/spec/CMMN/PropertyType/string"/>
+</caseFileItemDefinition>

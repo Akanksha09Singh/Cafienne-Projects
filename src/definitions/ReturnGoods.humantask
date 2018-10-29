@@ -1,0 +1,63 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="ReturnGoods" description="Return Goods" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <output id="_OoVK_Arrival_Status" name="Arrival_Status"/>
+        <input id="_T2QS_Register_Arrival" name="Register_Arrival"/>
+        <input id="_JHz0_Arrival_Status" name="Arrival_Status"/>
+        <input id="_RZp8_Assignee" name="Assignee"/>
+        <task-model>{
+  "schema":{
+    "title": "Return Goods",
+    "type": "object",
+   
+    "properties":{
+      "Register_Arrival":{
+        "title": "Register_Arrival",
+        "type": "object",
+        "properties":{
+          "Truck_Number":{
+            "title": "Truck_Number",
+            "type": "string",
+            "description": "Truck Number"
+          },
+          "Driver_Name": {
+            "title": "Driver_Name",
+            "type": "string",
+            "description": "Driver Name"
+          },
+           "Driver_ID":{
+            "title": "Driver_ID",
+            "type": "string",
+            "description": "Driver ID"
+          },
+           "Driver_Details":{
+            "title": "Driver_Details",
+            "type": "string",
+            "description": "Driver Details"
+          },
+           "Supplier_Name":{
+            "title": "Supplier_Name",
+            "type": "string",
+            "description": "Supplier Name"
+          }
+          }
+      },
+         "Arrival_Status":{
+        "title": "Arrival_Status",
+        "type": "object",
+        "properties":{
+          "Arrival_Status":{
+            "title": "Enter the Arrival status",
+            "type": "string",
+            "enum":[
+              "Registered",
+              "Accepted",
+              "Returned"
+            ]
+          }
+        }
+      }
+    }
+  }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

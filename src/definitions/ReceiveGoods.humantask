@@ -1,0 +1,160 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="ReceiveGoods" description="Receive Goods" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_8CFG_Purchase_Details" name="Purchase_Details"/>
+        <output id="_6ZBf_Receipt_Details" name="Receipt_Details"/>
+        <output id="_sbz4_Location" name="Location"/>
+        <input id="_tZOD_Supplier_Details" name="Supplier_Details"/>
+        <input id="_fGJG_Receipt_Details" name="Receipt_Details"/>
+        <input id="_gly8_Location" name="Location"/>
+        <input id="_756Q_Assignee" name="Assignee"/>
+        <task-model>{
+	"schema": {
+		"title": "Receive Goods",
+		"type": "object",
+		"required": [
+			"Location",
+			"Receipt_Details"
+		],
+
+		"properties": {
+			"Receipt_Details": {
+				"title": "Receipt Details",
+				"type": "object",
+				"properties": {
+					"Receipt_Number": {
+						"title": "Enter Receipt Number",
+						"type": "string",
+						"description": "Receipt Number"
+					},
+					"Receipt_Status": {
+						"title": "Enter Receipt Status",
+						"type": "string",
+						"enumNames": [
+							"Received",
+							"Inspected",
+							"Accepted",
+							"Rejected",
+							"Put Away"
+						],
+						"enum": [
+							"Received",
+							"Inspected",
+							"Accepted",
+							"Rejected",
+							"Put Away"
+						]
+					}
+				}
+			},
+			"Purchase_Details": {
+				"title": "Purchase Details",
+				"type": "object",
+				"properties": {
+					"Purchase_Order_Number": {
+						"title": "Purchase_Order_Number",
+						"type": "string",
+						"description": "Purchase Order Number"
+					},
+					"Purchase_Order_Date": {
+						"title": "Purchase_Order_Date",
+						"type": "string",
+						"format": "date",
+						"description": "Purchase Order Date"
+					},
+					"Shipment_Number": {
+						"title": "Shipment_Number",
+						"type": "string",
+						"description": "Shipment Number"
+					},
+					"Shipment_Details": {
+						"title": "Shipment_Details",
+						"type": "string",
+						"description": "Shipment Details"
+					}
+
+				}
+			},
+			"Supplier_Details": {
+				"title": "Supplier Details",
+				"type": "object",
+				"properties": {
+					"Supplier_Name": {
+						"title": "Supplier_Name",
+						"type": "string",
+						"description": "Supplier Name"
+					},
+					"Supplier_Address": {
+						"title": "Supplier_Address",
+						"type": "string",
+						"description": "Supplier Address"
+					}
+				}
+			},
+
+			"Location": {
+				"title": "Location",
+				"type": "object",
+				"properties": {
+					"Location": {
+						"title": "Enter Location",
+						"type": "string",
+						"enumNames": [
+							"Receipt",
+							"Inspection",
+							"Quarantine or Rejection",
+							"Project Storage",
+							"Anonymous Storage"
+						],
+						"enum": [
+							"Receipt",
+							"Inspection",
+							"Quarantine or Rejection",
+							"Project Storage",
+							"Anonymous Storage"
+						]
+					}
+				}
+			}
+		}
+	},
+	"uiSchema1": {
+		"Purchase_Details": {
+			"Receipt_Details": {
+				"Supplier_Details": {
+					"Location": {
+						"ui:order": ["Receipt_Number", "Receipt_Status", "Location", "Purchase_Order_Number", "Purchase_Order_Date", "Shipment_Number", "Shipment_Details", "Supplier_Name", "Supplier_Address"]
+
+					}
+				}
+			}
+		}
+	},
+	"uiSchema2": {
+		"Purchase_Details": {
+			"Purchase_Order_Number": {
+				"ui:readonly": true
+			},
+			"Purchase_Order_Date": {
+				"ui:readonly": true
+			},
+			"Shipment_Number": {
+				"ui:readonly": true
+			},
+			"Shipment_Details": {
+				"ui:readonly": true
+			}
+		},
+		"uiSchema3": {
+			"Supplier_Details": {
+				"Supplier_Name": {
+					"ui:readonly": true
+				},
+				"Supplier_Address": {
+					"ui:readonly": true
+				}
+			}
+		}
+	}
+}</task-model>
+    </cafienne:implementation>
+</humantask>
