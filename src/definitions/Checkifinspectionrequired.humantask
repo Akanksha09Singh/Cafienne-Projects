@@ -1,0 +1,86 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="Checkifinspectionrequired" description="Check if inspection required" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <output id="_1PqV_Inspection_Required" name="Inspection_Required"/>
+        <input id="_vQLs_Receipt_Details" name="Receipt_Details"/>
+        <input id="_jicZ_Location" name="Location"/>
+        <input id="_kgYk_Assignee" name="Assignee"/>
+        <task-model>{
+	"schema": {
+		"title": "Check if Inspection Required",
+		"type": "object",
+		"required": [
+			"Inspection_Required"
+		],
+		"properties": {
+			"Receipt_Details": {
+				"title": "Receipt Details",
+				"type": "object",
+				"properties": {
+					"Receipt_Number": {
+						"title": "Receipt Number",
+						"type": "string",
+						"description": "Receipt Number"
+					},
+					"Receipt_Status": {
+						"title": "Receipt Status",
+						"type": "string",
+						"description": "Receipt Status"
+					}
+				}
+			},
+			"Location": {
+				"title": "Location",
+				"type": "object",
+				"properties": {
+					"Location": {
+						"title": "Location",
+						"type": "string",
+						"description": "Location"
+					}
+				}
+			},
+			"Inspection_Required": {
+				"title": "Inspection Required Status",
+				"type": "object",
+				"properties": {
+					"Inspection_Required_Status": {
+						"title": "Enter the Inspection Required status",
+						"type": "string",
+						"enum": [
+							"Yes",
+							"No"
+						]
+					}
+				}
+			}
+
+		}
+	},
+	"uiSchema1": {
+		"Receipt_Details": {
+			"Location": {
+				"ui:order": ["Receipt_Number", "Receipt_Status", "Location"]
+			}
+		}
+	},
+	"uiSchema2": {
+		"Receipt_Details": {
+			"Receipt_Number": {
+				"ui:readonly": true
+			},
+			"Receipt_Status": {
+				"ui:readonly": true
+			}
+		}
+	},
+	"uiSchema3": {
+		"Location": {
+			"Location": {
+				"ui:readonly": true
+			}
+
+		}
+	}
+}</task-model>
+    </cafienne:implementation>
+</humantask>

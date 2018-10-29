@@ -1,0 +1,344 @@
+<case id="PhoneManagemnetSystem.case" name="PhoneManagemnetSystem" description="PhoneManagemnetSystem" guid="_j6e5Q">
+    <caseFileModel>
+        <caseFileItem id="_j6e5Q_6" name="Verification_Response" multiplicity="ExactlyOne" definitionRef="verification_response.cfid"/>
+        <caseFileItem id="_j6e5Q_7" name="Incident_Response" multiplicity="ExactlyOne" definitionRef="incident_NaN.cfid"/>
+        <caseFileItem id="_j6e5Q_5" name="User" multiplicity="ExactlyOne" definitionRef="user.cfid"/>
+        <caseFileItem id="_j6e5Q_8" name="UserResponse" multiplicity="ExactlyOne" definitionRef="userresponse.cfid"/>
+        <caseFileItem id="_j6e5Q_15" name="Services" multiplicity="ExactlyOne" definitionRef="services.cfid"/>
+        <caseFileItem id="_j6e5Q_36" name="Issue" multiplicity="ExactlyOne" definitionRef="issue.cfid"/>
+        <caseFileItem id="_j6e5Q_88" name="Specialist" multiplicity="ExactlyOne" definitionRef="specialist_4.cfid"/>
+        <caseFileItem id="_j6e5Q_123" name="Message" multiplicity="ExactlyOne" definitionRef="message_1.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm__j6e5Q_0" name="PhoneManagemnetSystem" autoComplete="true">
+        <planItem id="pi__j6e5Q_0" name="Verify And Select Services" definitionRef="_j6e5Q_0"/>
+        <planItem id="pi__j6e5Q_24" name="Landline" definitionRef="_j6e5Q_24" entryCriteriaRefs="crit__j6e5Q_1"/>
+        <planItem id="pi__j6e5Q_26" name="Mobile" definitionRef="_j6e5Q_26" entryCriteriaRefs="crit__j6e5Q_2"/>
+        <planItem id="pi__j6e5Q_28" name="DTH" definitionRef="_j6e5Q_28" entryCriteriaRefs="crit__j6e5Q_3"/>
+        <planItem id="pi__j6e5Q_37" name="Assign" definitionRef="_j6e5Q_37" entryCriteriaRefs="crit__j6e5Q_5 crit__j6e5Q_6 crit__j6e5Q_4"/>
+        <planItem id="pi_ms__j6e5Q_0" name="Assigned" definitionRef="ms__j6e5Q_0" entryCriteriaRefs="crit__j6e5Q_8"/>
+        <planItem id="pi__j6e5Q_59" name="In Progress" definitionRef="_j6e5Q_59" entryCriteriaRefs="crit__j6e5Q_9"/>
+        <planItem id="pi_ms__j6e5Q_1" name="Complete" definitionRef="ms__j6e5Q_1" entryCriteriaRefs="crit__j6e5Q_17"/>
+        <planItem id="pi_ms__j6e5Q_2" name="Invalid" definitionRef="ms__j6e5Q_2" entryCriteriaRefs="crit__j6e5Q_12 crit__j6e5Q_11"/>
+        <planItem id="pi_pt__j6e5Q_2" name="Notify2" definitionRef="pt__j6e5Q_2" entryCriteriaRefs="crit__j6e5Q_16"/>
+        <planItem id="pi_ht__j6e5Q_8" name="Work_Status" definitionRef="ht__j6e5Q_8" entryCriteriaRefs="crit__j6e5Q_10"/>
+        <planItem id="pi_pt__j6e5Q_3" name="Notify3" definitionRef="pt__j6e5Q_3" entryCriteriaRefs="crit__j6e5Q_18"/>
+        <planItem id="pi_ht__j6e5Q_9" name="Verify_User_Status" definitionRef="ht__j6e5Q_9" entryCriteriaRefs="crit__j6e5Q_14"/>
+        <planItem id="pi_ht__j6e5Q_10" name="verify  Issue Status" definitionRef="ht__j6e5Q_10" entryCriteriaRefs="crit__j6e5Q_15"/>
+        <sentry id="crit__j6e5Q_1" name="Sentry_1">
+            <ifPart id="_j6e5Q_49" name="IfPart_0" contextRef="_j6e5Q_15">
+                <condition id="_j6e5Q_50" name="Expression_1" language="spel">
+                    <body>
+                        <![CDATA[Services.Type =="Landline"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <planItemOnPart id="_j6e5Q_33" name="PlanItemOnPart_1" sourceRef="pi__j6e5Q_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_2" name="Sentry_2">
+            <ifPart id="_j6e5Q_51" name="IfPart_1" contextRef="_j6e5Q_15">
+                <condition id="_j6e5Q_52" name="Expression_2" language="spel">
+                    <body>
+                        <![CDATA[Services.Type =="Mobile"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <planItemOnPart id="_j6e5Q_34" name="PlanItemOnPart_2" sourceRef="pi__j6e5Q_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_3" name="Sentry_3">
+            <ifPart id="_j6e5Q_53" name="IfPart_2" contextRef="_j6e5Q_15">
+                <condition id="_j6e5Q_54" name="Expression_3" language="spel">
+                    <body>
+                        <![CDATA[Services.Type =="DTH"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <planItemOnPart id="_j6e5Q_35" name="PlanItemOnPart_3" sourceRef="pi__j6e5Q_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_5" name="Sentry_5">
+            <planItemOnPart id="_j6e5Q_66" name="PlanItemOnPart_5" sourceRef="pi__j6e5Q_26">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_6" name="Sentry_6">
+            <planItemOnPart id="_j6e5Q_67" name="PlanItemOnPart_6" sourceRef="pi__j6e5Q_28">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_8" name="Sentry_8">
+            <planItemOnPart id="_j6e5Q_58" name="PlanItemOnPart_8" sourceRef="pi__j6e5Q_37">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_9" name="Sentry_9">
+            <planItemOnPart id="_j6e5Q_85" name="PlanItemOnPart_9" sourceRef="pi_ms__j6e5Q_0">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_12" name="Sentry_12">
+            <ifPart id="_j6e5Q_86" name="IfPart_6" contextRef="_j6e5Q_6">
+                <condition id="_j6e5Q_94" name="Expression_8" language="spel">
+                    <body>
+                        <![CDATA[Verification_Response.Status !="Valid"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <planItemOnPart id="_j6e5Q_25" name="PlanItemOnPart_12" sourceRef="pi_ht__j6e5Q_5">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_16" name="Sentry_16">
+            <planItemOnPart id="_j6e5Q_113" name="PlanItemOnPart_16" sourceRef="pi_ms__j6e5Q_0">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_10" name="Sentry_10">
+            <planItemOnPart id="_j6e5Q_87" name="PlanItemOnPart_10" sourceRef="pi__j6e5Q_59">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_17" name="Sentry_17">
+            <planItemOnPart id="_j6e5Q_115" name="PlanItemOnPart_17" sourceRef="pi_ht__j6e5Q_8">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_18" name="Sentry_18">
+            <planItemOnPart id="_j6e5Q_117" name="PlanItemOnPart_18" sourceRef="pi_ms__j6e5Q_1">
+                <standardEvent>occur</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_15" name="Sentry_15">
+            <ifPart id="_j6e5Q_91" name="IfPart_7" contextRef="_j6e5Q_6">
+                <condition id="_j6e5Q_125" name="Expression_5" language="spel">
+                    <body>
+                        <![CDATA[Verification_Response.Status == "Valid"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <planItemOnPart id="_j6e5Q_111" name="PlanItemOnPart_15" sourceRef="pi_ht__j6e5Q_5">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_4" name="Sentry_4">
+            <planItemOnPart id="_j6e5Q_65" name="PlanItemOnPart_4" sourceRef="pi__j6e5Q_24">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_14" name="Sentry_14">
+            <planItemOnPart id="_j6e5Q_110" name="PlanItemOnPart_14" sourceRef="pi_ht__j6e5Q_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_11" name="Sentry_11">
+            <ifPart id="_j6e5Q_83" name="IfPart_5" contextRef="_j6e5Q_6">
+                <condition id="_j6e5Q_84" name="Expression_7" language="spel">
+                    <body>
+                        <![CDATA[Verification_Response.Status !="Valid"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <planItemOnPart id="_j6e5Q_82" name="PlanItemOnPart_11" sourceRef="pi_ht__j6e5Q_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <humanTask id="ht__j6e5Q_0" name="Verify_User" isBlocking="true">
+            <inputs id="_j6e5Q_3" name="User" bindingRef="_j6e5Q_5"/>
+            <outputs id="_j6e5Q_11" name="User" bindingRef="_j6e5Q_5"/>
+            <outputs id="_j6e5Q_14" name="Verification_Response" bindingRef="_j6e5Q_6"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="Verify_user_details.humantask">
+                    <parameterMapping id="_j6e5Q_4" sourceRef="_j6e5Q_3" targetRef="_U13A_User"/>
+                    <parameterMapping id="_j6e5Q_10" sourceRef="_2eH4_UserResponse" targetRef="_j6e5Q_14"/>
+                    <parameterMapping id="_j6e5Q_12" sourceRef="_Pmex_User" targetRef="_j6e5Q_11"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__j6e5Q_1" name="Select_Services" isBlocking="true">
+            <inputs id="_j6e5Q_16" name="User" bindingRef="_j6e5Q_5"/>
+            <outputs id="_j6e5Q_18" name="Services" bindingRef="_j6e5Q_15"/>
+            <outputs id="_j6e5Q_20" name="User" bindingRef="_j6e5Q_5"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="Select_Services.humantask">
+                    <parameterMapping id="_j6e5Q_17" sourceRef="_j6e5Q_16" targetRef="_87IV_User"/>
+                    <parameterMapping id="_j6e5Q_19" sourceRef="_Z7nw_Services" targetRef="_j6e5Q_18"/>
+                    <parameterMapping id="_j6e5Q_21" sourceRef="_PTmm_User" targetRef="_j6e5Q_20"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__j6e5Q_2" name="Select Issue" isBlocking="true">
+            <inputs id="_j6e5Q_74" name="User" bindingRef="_j6e5Q_5"/>
+            <outputs id="_j6e5Q_76" name="Issue" bindingRef="_j6e5Q_36"/>
+            <outputs id="_j6e5Q_78" name="User" bindingRef="_j6e5Q_5"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="Landline_Issue_description.humantask">
+                    <parameterMapping id="_j6e5Q_75" sourceRef="_j6e5Q_74" targetRef="_TVCl_User"/>
+                    <parameterMapping id="_j6e5Q_77" sourceRef="_Z9XN_Issue" targetRef="_j6e5Q_76"/>
+                    <parameterMapping id="_j6e5Q_79" sourceRef="_SACW_User" targetRef="_j6e5Q_78"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__j6e5Q_3" name="Select Issue" isBlocking="true">
+            <inputs id="_j6e5Q_41" name="User" bindingRef="_j6e5Q_5"/>
+            <outputs id="_j6e5Q_43" name="Issue" bindingRef="_j6e5Q_36"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="Mobile_Issue_description.humantask">
+                    <parameterMapping id="_j6e5Q_42" sourceRef="_j6e5Q_41" targetRef="_Lswu_User"/>
+                    <parameterMapping id="_j6e5Q_44" sourceRef="_ByPR_Issue" targetRef="_j6e5Q_43"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__j6e5Q_4" name="Select Issue" isBlocking="true">
+            <inputs id="_j6e5Q_45" name="User" bindingRef="_j6e5Q_5"/>
+            <outputs id="_j6e5Q_47" name="Issue" bindingRef="_j6e5Q_36"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="DTH_Issue_description.humantask">
+                    <parameterMapping id="_j6e5Q_46" sourceRef="_j6e5Q_45" targetRef="_0qp7_User"/>
+                    <parameterMapping id="_j6e5Q_48" sourceRef="_VMV4_Issue" targetRef="_j6e5Q_47"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__j6e5Q_5" name="Verify_Issue" isBlocking="true">
+            <inputs id="_j6e5Q_40" name="Issue" bindingRef="_j6e5Q_36"/>
+            <outputs id="_j6e5Q_61" name="Verification_Response" bindingRef="_j6e5Q_6"/>
+            <outputs id="_j6e5Q_64" name="Issue" bindingRef="_j6e5Q_36"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="Verify_Issue.humantask">
+                    <parameterMapping id="_j6e5Q_60" sourceRef="_j6e5Q_40" targetRef="_yA5A_Issue"/>
+                    <parameterMapping id="_j6e5Q_62" sourceRef="_G1Wi_Verification_Response" targetRef="_j6e5Q_61"/>
+                    <parameterMapping id="_j6e5Q_63" sourceRef="_zOF0_Issue" targetRef="_j6e5Q_64">
+                        <transformation id="_j6e5Q_55" name="Expression_0" language="spel">
+                            <body>
+                                <![CDATA[Issue.IssueName]]>
+                            </body>
+                        </transformation>
+                    </parameterMapping>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__j6e5Q_6" name="Work on Issue" isBlocking="true">
+            <inputs id="_j6e5Q_98" name="Issue"/>
+            <outputs id="_j6e5Q_100" name="Verification_Response"/>
+            <outputs id="_j6e5Q_102" name="Issue"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="Verify_Issue.humantask">
+                    <parameterMapping id="_j6e5Q_99" sourceRef="_j6e5Q_98" targetRef="_yA5A_Issue"/>
+                    <parameterMapping id="_j6e5Q_101" sourceRef="_G1Wi_Verification_Response" targetRef="_j6e5Q_100"/>
+                    <parameterMapping id="_j6e5Q_103" sourceRef="_zOF0_Issue" targetRef="_j6e5Q_102"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__j6e5Q_7" name="Select Issue" isBlocking="true">
+            <inputs id="_j6e5Q_96" name="User" bindingRef="_j6e5Q_5"/>
+            <outputs id="_j6e5Q_104" name="Issue" bindingRef="_j6e5Q_36"/>
+            <outputs id="_j6e5Q_106" name="User" bindingRef="_j6e5Q_5"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="Landline_Issue_description.humantask">
+                    <parameterMapping id="_j6e5Q_97" sourceRef="_j6e5Q_96" targetRef="_TVCl_User"/>
+                    <parameterMapping id="_j6e5Q_105" sourceRef="_Z9XN_Issue" targetRef="_j6e5Q_104"/>
+                    <parameterMapping id="_j6e5Q_107" sourceRef="_SACW_User" targetRef="_j6e5Q_106"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__j6e5Q_8" name="Work_Status" isBlocking="true"/>
+        <humanTask id="ht__j6e5Q_9" name="Verify_User_Status" isBlocking="true">
+            <outputs id="_j6e5Q_126" name="Message" bindingRef="_j6e5Q_123"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="Verify_User_Status.humantask">
+                    <parameterMapping id="_j6e5Q_127" sourceRef="_kFO8_Message" targetRef="_j6e5Q_126"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__j6e5Q_10" name="verify  Issue Status" isBlocking="true"/>
+        <processTask id="pt__j6e5Q_0" name="Assign_Specialist" isBlocking="true" processRef="Assign_Specialist.process">
+            <inputs id="_j6e5Q_69" name="Issue" bindingRef="_j6e5Q_36"/>
+            <outputs id="_j6e5Q_71" name="Specialist" bindingRef="_j6e5Q_88"/>
+            <parameterMapping id="_j6e5Q_70" sourceRef="_j6e5Q_69" targetRef="_i9pf_Issue"/>
+            <parameterMapping id="_j6e5Q_72" sourceRef="_phFK_Specialist" targetRef="_j6e5Q_71"/>
+        </processTask>
+        <processTask id="pt__j6e5Q_2" name="Notify2" isBlocking="true" processRef="Notify_Assign.process">
+            <inputs id="_j6e5Q_118" name="Specialist" bindingRef="_j6e5Q_88"/>
+            <parameterMapping id="_j6e5Q_119" sourceRef="_j6e5Q_118" targetRef="_VA0v_Assignee"/>
+        </processTask>
+        <processTask id="pt__j6e5Q_3" name="Notify3" isBlocking="true" processRef="Notify_Complete.process"/>
+        <milestone id="ms__j6e5Q_0" name="Assigned"/>
+        <milestone id="ms__j6e5Q_1" name="Complete"/>
+        <milestone id="ms__j6e5Q_2" name="Invalid"/>
+        <stage id="_j6e5Q_0" name="Verify And Select Services" autoComplete="true">
+            <planItem id="pi_ht__j6e5Q_0" name="Verify_User" definitionRef="ht__j6e5Q_0"/>
+            <planItem id="pi_ht__j6e5Q_1" name="Select_Services" definitionRef="ht__j6e5Q_1" entryCriteriaRefs="crit__j6e5Q_0"/>
+            <sentry id="crit__j6e5Q_0" name="Sentry_0">
+                <ifPart id="_j6e5Q_92" name="IfPart_4" contextRef="_j6e5Q_6">
+                    <condition id="_j6e5Q_93" name="Expression_6" language="spel">
+                        <body>
+                            <![CDATA[Verification_Response.Status =="Valid"]]>
+                        </body>
+                    </condition>
+                </ifPart>
+                <planItemOnPart id="_j6e5Q_23" name="PlanItemOnPart_0" sourceRef="pi_ht__j6e5Q_0">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+        </stage>
+        <stage id="_j6e5Q_24" name="Landline" autoComplete="true">
+            <planItem id="pi_ht__j6e5Q_7" name="Select Issue" definitionRef="ht__j6e5Q_7"/>
+        </stage>
+        <stage id="_j6e5Q_26" name="Mobile" autoComplete="true">
+            <planItem id="pi_ht__j6e5Q_3" name="Select Issue" definitionRef="ht__j6e5Q_3"/>
+        </stage>
+        <stage id="_j6e5Q_28" name="DTH" autoComplete="true">
+            <planItem id="pi_ht__j6e5Q_4" name="Select Issue" definitionRef="ht__j6e5Q_4"/>
+        </stage>
+        <stage id="_j6e5Q_37" name="Assign" autoComplete="true">
+            <planItem id="pi_ht__j6e5Q_5" name="Verify_Issue" definitionRef="ht__j6e5Q_5"/>
+            <planItem id="pi_pt__j6e5Q_0" name="Assign_Specialist" definitionRef="pt__j6e5Q_0" entryCriteriaRefs="crit__j6e5Q_7"/>
+            <sentry id="crit__j6e5Q_7" name="Sentry_7">
+                <ifPart id="_j6e5Q_89" name="IfPart_3" contextRef="_j6e5Q_6">
+                    <condition id="_j6e5Q_90" name="Expression_4" language="spel">
+                        <body>
+                            <![CDATA[Verification_Response.Status =="Valid"]]>
+                        </body>
+                    </condition>
+                </ifPart>
+                <planItemOnPart id="_j6e5Q_56" name="PlanItemOnPart_7" sourceRef="pi_ht__j6e5Q_5">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+        </stage>
+        <stage id="_j6e5Q_59" name="In Progress" autoComplete="true">
+            <planItem id="pi_ht__j6e5Q_6" name="Work on Issue" definitionRef="ht__j6e5Q_6"/>
+        </stage>
+    </casePlanModel>
+    <input id="_j6e5Q_13" name="User" bindingRef="_j6e5Q_5"/>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+  "schema": {
+    "title": "User",
+    "type": "object",
+   
+    "properties": {
+      "User": {
+        "title": "User Details",
+        "type": "object",
+        "properties": {
+          "UserName": {
+            "title": "User Name",
+            "type": "string",
+            "description": "User Name"
+          },
+          "PhoneNumber": {
+            "title": "Phone Number",
+            "type": "string",
+            "description": "Phone Number"
+          }
+      }
+  }
+}
+}
+}</cafienne:start-case-model>
+    </extensionElements>
+</case>

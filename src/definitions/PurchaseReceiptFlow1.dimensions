@@ -1,0 +1,128 @@
+<CMMNDI>
+    <CMMNDiagram>
+        <CMMNShape cmmnElementRef="cm__jryUr_0" name="PurchaseReceiptFlow1">
+            <Bounds width="870" height="1070"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__jryUr_0" name="Register_Arrival">
+            <Bounds x="30" y="40" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ms__jryUr_0" name="Arrival Registered">
+            <Bounds x="40" y="230" width="100" height="40"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_0" name="Sentry_0">
+            <Bounds x="74" y="220" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi__jryUr_8" name="Arrival">
+            <Bounds x="180" y="70" width="670" height="240"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__jryUr_1" name="Check Paperwork Available from Driver">
+            <Bounds x="210" y="100" width="240" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi__jryUr_15" name="Receiving">
+            <Bounds x="500" y="430" width="320" height="280"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__jryUr_5" name="Receive Goods">
+            <Bounds x="610" y="480" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__jryUr_6" name="Check if inspection required">
+            <Bounds x="560" y="590" width="200" height="70"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi__jryUr_19" name="Inspection">
+            <Bounds x="470" y="810" width="340" height="220"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__jryUr_7" name="Inspect Goods">
+            <Bounds x="690" y="870" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__jryUr_8" name="Register inspection&#10; result">
+            <Bounds x="520" y="840" width="120" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__jryUr_9" name="Reject Goods">
+            <Bounds x="530" y="950" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi__jryUr_24" name="Storage">
+            <Bounds x="30" y="480" width="370" height="380"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__jryUr_10" name="Determine Storage Location">
+            <Bounds x="90" y="640" width="230" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__jryUr_11" name="Put away goods to project location">
+            <Bounds x="60" y="520" width="310" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__jryUr_12" name="Put away goods to anonymous storage location">
+            <Bounds x="60" y="760" width="300" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_3" name="Sentry_3">
+            <Bounds x="644" y="580" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_5" name="Sentry_5">
+            <Bounds x="634" y="870" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_6" name="Sentry_6">
+            <Bounds x="584" y="940" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_7" name="Sentry_7">
+            <Bounds x="314" y="680" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_8" name="Sentry_8">
+            <Bounds x="194" y="570" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_14" name="Sentry_14">
+            <Bounds x="654" y="470" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_9" name="Sentry_9">
+            <Bounds x="194" y="750" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_1" name="Sentry_1">
+            <Bounds x="204" y="130" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__jryUr_2" name="Register Shipment Receipt">
+            <Bounds x="580" y="110" width="230" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_12" name="Sentry_12">
+            <Bounds x="574" y="130" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_10" name="Sentry_10">
+            <Bounds x="664" y="800" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_pt__jryUr_0" name="Get Supplier Contact Number from ERP">
+            <Bounds x="210" y="210" width="240" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__jryUr_3" name="Call Supplier and confirm Paperwork receipt via Email">
+            <Bounds x="520" y="220" width="320" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_11" name="Sentry_11">
+            <Bounds x="514" y="240" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_2" name="Sentry_2">
+            <Bounds x="314" y="200" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_13" name="Sentry_13">
+            <Bounds x="674" y="160" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_pt__jryUr_1" name="Notify Email">
+            <Bounds x="220" y="360" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_15" name="Sentry_15">
+            <Bounds x="274" y="350" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__jryUr_4" name="Sentry_4">
+            <Bounds x="314" y="640" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__jryUr_0" targetCMMNElementRef="crit__jryUr_0"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__jryUr_5" targetCMMNElementRef="crit__jryUr_3"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__jryUr_7" targetCMMNElementRef="crit__jryUr_5"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__jryUr_8" targetCMMNElementRef="crit__jryUr_6"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__jryUr_10" targetCMMNElementRef="crit__jryUr_9"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ms__jryUr_0" targetCMMNElementRef="crit__jryUr_1"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__jryUr_1" targetCMMNElementRef="crit__jryUr_12"/>
+        <CMMNEdge sourceCMMNElementRef="crit__jryUr_8" targetCMMNElementRef="pi_ht__jryUr_10"/>
+        <CMMNEdge sourceCMMNElementRef="crit__jryUr_14" targetCMMNElementRef="pi__jryUr_8"/>
+        <CMMNEdge sourceCMMNElementRef="pi__jryUr_15" targetCMMNElementRef="crit__jryUr_10"/>
+        <CMMNEdge sourceCMMNElementRef="pi_pt__jryUr_0" targetCMMNElementRef="crit__jryUr_11"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__jryUr_1" targetCMMNElementRef="crit__jryUr_2"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__jryUr_3" targetCMMNElementRef="crit__jryUr_13"/>
+        <CMMNEdge sourceCMMNElementRef="pi_pt__jryUr_0" targetCMMNElementRef="crit__jryUr_15"/>
+        <CMMNEdge sourceCMMNElementRef="crit__jryUr_7" targetCMMNElementRef="pi_ht__jryUr_8"/>
+        <CMMNEdge sourceCMMNElementRef="pi__jryUr_15" targetCMMNElementRef="crit__jryUr_4"/>
+    </CMMNDiagram>
+</CMMNDI>

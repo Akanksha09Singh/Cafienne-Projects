@@ -1,0 +1,21 @@
+<process name="Notify1" description="Notify1">
+    <input id="_5vaW_Message" name="Message"/>
+    <extensionElements>
+        <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.instance.process.smtp.SMTPCallDefinition">
+            <smtp-server>mailcatcher</smtp-server>
+            <smtp-port>1025</smtp-port>
+            <subject>Verification Status </subject>
+            <mail-body type="text/html">
+                <![CDATA[
+     <html><body><h3> Validator says: <label style="color:blue">${Message}</label></h3></body></html>
+          
+                 ]]>
+            </mail-body>
+            <from>support@service.com</from>
+            <reply-to>support@service.com</reply-to>
+            <to>
+                <address name="customer">customer@service.com</address>
+            </to>
+        </cafienne:implementation>
+    </extensionElements>
+</process>

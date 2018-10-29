@@ -1,0 +1,15 @@
+<process name="Assign_Specialist" description="Assign_Specialist">
+    <input id="_i9pf_Issue" name="Issue"/>
+    <output id="_phFK_Specialist" name="Specialist"/>
+    <input id="_VIWN_Assignee" name="Assignee"/>
+    <extensionElements>
+        <cafienne:implementation xmlns:cafienne="org.cafienne" class="org.cafienne.cmmn.instance.process.http.HTTPCallDefinition" async="true">
+            <url>http://host.docker.internal:3333/usermappings/${Issue}</url>
+            <method>GET</method>
+            <http-headers>
+                <http-header name="Content-Type">application/json</http-header>
+            </http-headers>
+            <parameterMapping sourceRef="responsePayload" targetRef="Specialist"/>
+        </cafienne:implementation>
+    </extensionElements>
+</process>

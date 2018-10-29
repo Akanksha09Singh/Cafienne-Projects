@@ -1,0 +1,55 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="DTH_Issue_description" description="DTH_Issue_description" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <output id="_VMV4_Issue" name="Issue"/>
+        <input id="_0qp7_User" name="User"/>
+        <output id="_u8GX_User" name="User"/>
+        <input id="_U3Wp_Assignee" name="Assignee"/>
+        <task-model>{
+  "schema": {
+    "title": "User",
+    "type": "object",
+    "required":[ 
+      "Services"
+    ],
+    "properties": {
+      "User": {
+        "title": "User Details",
+        "type": "object",
+        "properties": {
+         "UserName": {
+           "type": "string",
+           "description": "User Name"
+         },
+          "PhoneNumber": {
+            "type": "string",
+            "description": "Phone Number"
+         }
+          
+        }
+      },
+      "Issue":{
+      "title": "Issue Type",
+        "type": "object",
+        "properties": {
+          "IssueName": {
+            "title": "Service Type",
+            "type": "string",
+            "enumNames": [
+              "Network",
+              "others"],
+            "enum": [
+              "Network",
+              "others"]
+          },
+          "Description": {
+            "type": "string",
+            "description": "Enter your issue description"
+         }
+        }
+      }
+    }
+  }
+}
+</task-model>
+    </cafienne:implementation>
+</humantask>

@@ -1,0 +1,179 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="PutAwayGoodsToQuarantineOrRejectionStorageLocation" description="Put away goods to Quarantine or Rejection storage location" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_xeqp_Put_Away_Advice_Number" name="Put_Away_Advice_Number"/>
+        <output id="_n6op_Put_Away_Advice_Number" name="Put_Away_Advice_Number"/>
+        <input id="_b6PY_Receipt_Details" name="Receipt_Details"/>
+        <input id="_8lKt_Purchase_Details" name="Purchase_Details"/>
+        <input id="_oqve_Supplier_Details" name="Supplier_Details"/>
+        <input id="_r1qu_Location" name="Location"/>
+        <output id="_oeaf_Location" name="Location"/>
+        <output id="_GWnH_Receipt_Details" name="Receipt_Details"/>
+        <input id="_Z4hI_Assignee" name="Assignee"/>
+        <task-model>{
+	"schema": {
+		"title": "Put away goods to Quarantine or Rejection storage location",
+		"type": "object",
+
+		"properties": {
+			"Put_Away_Advice_Number": {
+				"title": "Put Away Advice Number",
+				"type": "object",
+				"properties": {
+					"Put_Away_Advice_Number": {
+						"title": "Enter Put Away Advice Number",
+						"type": "string",
+						"description": "Put Away Advice Number"
+					}
+				}
+			},
+			"Receipt_Details": {
+				"title": "Receipt Details",
+				"type": "object",
+				"properties": {
+					"Receipt_Number": {
+						"title": "Receipt Number",
+						"type": "string",
+						"description": "Receipt Number"
+					},
+					"Receipt_Status": {
+						"title": "Enter Receipt Status",
+						"type": "string",
+						"enumNames": [
+							"Received",
+							"Inspected",
+							"Accepted",
+							"Rejected",
+							"Put Away"
+						],
+						"enum": [
+							"Received",
+							"Inspected",
+							"Accepted",
+							"Rejected",
+							"Put Away"
+						]
+					}
+				}
+			},
+			"Purchase_Details": {
+				"title": "Purchase Details",
+				"type": "object",
+				"properties": {
+					"Purchase_Order_Number": {
+						"title": "Purchase Order Number",
+						"type": "string",
+						"description": "Purchase Order Number"
+					},
+					"Purchase_Order_Date": {
+						"title": "Purchase Order Date",
+						"type": "string",
+						"format": "date",
+						"description": "Purchase Order Date"
+					},
+					"Shipment_Number": {
+						"title": "Shipment Number",
+						"type": "string",
+						"description": "Shipment_Number"
+					},
+					"Shipment_Details": {
+						"title": "Shipment Details",
+						"type": "string",
+						"description": "Shipment_Details"
+					}
+				}
+			},
+			"Supplier_Details": {
+				"title": "Purchase Details",
+				"type": "object",
+				"properties": {
+					"Supplier_Name": {
+						"title": "Supplier Name",
+						"type": "string",
+						"description": "Supplier Name"
+					},
+					"Supplier_Address": {
+						"title": "Supplier Address",
+						"type": "string",
+						"description": "Supplier Address"
+					}
+				}
+			},
+			"Location": {
+				"title": "Location",
+				"type": "object",
+				"properties": {
+					"Location": {
+						"title": "Enter Location",
+						"type": "string",
+						"enumNames": [
+							"Receipt",
+							"Inspection",
+							"Quarantine or Rejection",
+							"Project Storage",
+							"Anonymous Storage"
+						],
+						"enum": [
+							"Receipt",
+							"Inspection",
+							"Quarantine or Rejection",
+							"Project Storage",
+							"Anonymous Storage"
+						]
+					}
+				}
+			}
+		}
+	},
+	"uiSchema1": {
+		"Put_Away_Advice_Number": {
+			"Purchase_Details": {
+				"Receipt_Details": {
+					"Supplier_Details": {
+						"Location": {
+							"ui:order": ["Put_Away_Advice_Number", "Receipt_Number", "Receipt_Status", "Location", "Purchase_Order_Number", "Purchase_Order_Date", "Shipment_Number", "Shipment_Details", "Supplier_Name", "Supplier_Address"]
+						}
+					}
+				}
+			}
+		}
+	},
+	"uiSchema2": {
+		"Purchase_Details": {
+			"Purchase_Order_Number": {
+				"ui:readonly": true
+			},
+			"Purchase_Order_Date": {
+				"ui:readonly": true
+			},
+			"Shipment_Number": {
+				"ui:readonly": true
+			},
+			"Shipment_Details": {
+				"ui:readonly": true
+			}
+		}
+
+	},
+	"uiSchema3": {
+		"Receipt_Details": {
+			"Receipt_Number": {
+				"ui:readonly": true
+			}
+		}
+	},
+	"uiSchema4": {
+		"Supplier_Details": {
+
+			"Supplier_Name": {
+				"ui:readonly": true
+			},
+			"Supplier_Address": {
+				"ui:readonly": true
+			}
+
+		}
+	}
+
+}</task-model>
+    </cafienne:implementation>
+</humantask>

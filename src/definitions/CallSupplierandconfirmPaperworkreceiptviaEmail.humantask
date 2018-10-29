@@ -1,0 +1,30 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="CallSupplierandconfirmPaperworkreceiptviaEmail" description="Call Supplier and confirm Paperwork  receipt via Email" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <output id="_LuJU_Message" name="Paperwork_Available_Response"/>
+        <input id="_NGE6_Register_Arrival" name="Paperwork_Available_Response"/>
+        <input id="_wlaJ_Assignee" name="Assignee"/>
+        <task-model>{
+  "schema":{
+    "title": "Call Supplier and confirm Paperwork receipt via Email",
+    "type": "object",
+   
+    "properties":{
+         "Paperwork_Available_Response":{
+        "title": "Paperwork Available Response",
+        "type": "object",
+        "properties":{
+          "Paperwork_Available_Response_Status":{
+            "title": "Enter Paperwork Available status",
+            "type": "string",
+            "enum":[
+              "Yes",
+              "No"
+            ]
+          }
+        }
+      }
+    }
+  }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

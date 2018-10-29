@@ -1,0 +1,54 @@
+<case id="BankIncident.case" name="BankIncident" description="BankIncident" guid="_URwIN">
+    <caseFileModel>
+        <caseFileItem id="_URwIN_3" name="BankIncident" multiplicity="ExactlyOne" definitionRef="bankincident.cfid"/>
+        <caseFileItem id="_URwIN_9" name="ValidationResponse" multiplicity="ExactlyOne" definitionRef="validationresponse.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm__URwIN_0" name="BankIncident" autoComplete="true">
+        <planItem id="pi__URwIN_6" name="Complaint_Validation" definitionRef="_URwIN_6"/>
+        <humanTask id="ht__URwIN_1" name="Validate_Complaint" isBlocking="true"/>
+        <stage id="_URwIN_6" name="Complaint_Validation" autoComplete="true">
+            <planItem id="pi_ht__URwIN_1" name="Validate_Complaint" definitionRef="ht__URwIN_1"/>
+        </stage>
+    </casePlanModel>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+	"schema": {
+		"title": "BankIncident",
+		"type": "object",
+         "required": [
+           "BankIncident"
+         ],
+		"properties": {
+		"BankIncident": {
+			"title": "BankIncident",
+			"type": "object",
+			"properties": {
+				"CustomerID": {
+					"type": "string",
+					"title": "Customer ID"
+				},
+				"ComplaintDetails": {
+					"type": "string",
+					"title": "Summary of Complaint"
+				},
+              "Category": {
+					"type": "string",
+					"title": "Category of complaint",
+                "enum": [
+                    "Credit Card",
+                  "Debit Card",
+                  "Internet Banking"
+                   ],
+                "enumNames":[
+                  "Credit_card",
+                  "Debit_card",
+                  "Internet_banking"                  
+                ]
+				}
+			}
+		}
+	}
+
+}}</cafienne:start-case-model>
+    </extensionElements>
+</case>

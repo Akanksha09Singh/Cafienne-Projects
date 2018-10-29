@@ -1,0 +1,56 @@
+<humantask>
+    <cafienne:implementation xmlns:cafienne="org.cafienne" name="CustomerType" description="CustomerType" class="org.cafienne.cmmn.definition.task.WorkflowTaskDefinition">
+        <input id="_nLCa_CustomerType" name="CustomerType"/>
+        <output id="_1C0K_CustomerType" name="CustomerType"/>
+        <task-model>{
+  "schema": {
+    "title": "User",
+    "type": "object",
+    "required":[ 
+      "UserResponse"
+    ],
+    "properties": {
+      "User": {
+        "title": "User Details",
+        "type": "object",
+        "properties": {
+         "UserName": {
+           "type": "string",
+           "description": "User Name"
+         },
+          "PhoneNumber": {
+            "type": "string",
+            "description": "Phone Number"
+         },
+          "Type": {
+            "title": "Service Type",
+            "type": "string",
+            "enumNames": [
+              "Landline",
+              "Mobile",
+              "DTH"],
+            "enum": [
+              "Landline",
+              "Mobile",
+              "DTH"]
+          }
+   }
+      },
+      "UserResponse" 
+        "title": "UserResponse Status",
+        "type": "object",
+        "properties": {
+          "Status": {
+            "title": "Enter the status",
+            "type": "string",
+            "enum": [
+              "Valid",
+              "Invalid"]
+          }
+        }
+      }
+    }
+  }
+}</task-model>
+    </cafienne:implementation>
+</humantask>

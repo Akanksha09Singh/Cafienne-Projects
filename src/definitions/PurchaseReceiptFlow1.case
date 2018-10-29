@@ -1,0 +1,443 @@
+<case id="PurchaseReceiptFlow1.case" name="PurchaseReceiptFlow1" description="PurchaseReceiptFlow" guid="_jryUr">
+    <caseFileModel>
+        <caseFileItem id="_jryUr_5" name="Register_Arrival" multiplicity="ExactlyOne" definitionRef="register_arrival.cfid"/>
+        <caseFileItem id="_jryUr_1" name="Arrival_Status" multiplicity="ExactlyOne" definitionRef="arrival_status.cfid"/>
+        <caseFileItem id="_jryUr_35" name="Paperwork_Available_Response" multiplicity="ExactlyOne" definitionRef="paperwork_available_response.cfid"/>
+        <caseFileItem id="_jryUr_32" name="Purchase_Details" multiplicity="ExactlyOne" definitionRef="purchase_details.cfid"/>
+        <caseFileItem id="_jryUr_50" name="Receipt_Details" multiplicity="ExactlyOne" definitionRef="receipt_details.cfid"/>
+        <caseFileItem id="_jryUr_52" name="Location" multiplicity="ExactlyOne" definitionRef="location.cfid"/>
+        <caseFileItem id="_jryUr_49" name="Inspection_Required" multiplicity="ExactlyOne" definitionRef="inspection_required.cfid"/>
+        <caseFileItem id="_jryUr_121" name="Inspection_Status" multiplicity="ExactlyOne" definitionRef="inspection_status.cfid"/>
+        <caseFileItem id="_jryUr_129" name="Project_Goods" multiplicity="ExactlyOne" definitionRef="project_goods.cfid"/>
+        <caseFileItem id="_jryUr_173" name="Put_Away_Advice_Number" multiplicity="ExactlyOne" definitionRef="put_away_advice_number.cfid"/>
+        <caseFileItem id="_jryUr_58" name="Supplier_Details" multiplicity="ExactlyOne" definitionRef="supplier_details.cfid"/>
+        <caseFileItem id="_jryUr_57" name="Supplier_Phone" multiplicity="ExactlyOne" definitionRef="supplier_phone.cfid"/>
+        <caseFileItem id="_jryUr_87" name="Message" multiplicity="ExactlyOne" definitionRef="message_2.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm__jryUr_0" name="PurchaseReceiptFlow1" autoComplete="true">
+        <planItem id="pi_ht__jryUr_0" name="Register_Arrival" definitionRef="ht__jryUr_0"/>
+        <planItem id="pi_ms__jryUr_0" name="Arrival Registered" definitionRef="ms__jryUr_0" entryCriteriaRefs="crit__jryUr_0"/>
+        <planItem id="pi__jryUr_8" name="Arrival" definitionRef="_jryUr_8"/>
+        <planItem id="pi__jryUr_15" name="Receiving" definitionRef="_jryUr_15"/>
+        <planItem id="pi__jryUr_19" name="Inspection" definitionRef="_jryUr_19" entryCriteriaRefs="crit__jryUr_10"/>
+        <planItem id="pi__jryUr_24" name="Storage" definitionRef="_jryUr_24"/>
+        <planItem id="pi_pt__jryUr_1" name="Notify Email" definitionRef="pt__jryUr_1" entryCriteriaRefs="crit__jryUr_15"/>
+        <sentry id="crit__jryUr_0" name="Sentry_0">
+            <planItemOnPart id="_jryUr_7" name="PlanItemOnPart_0" sourceRef="pi_ht__jryUr_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__jryUr_10" name="Sentry_10">
+            <ifPart id="_jryUr_119" name="IfPart_0" contextRef="_jryUr_49">
+                <condition id="_jryUr_127" name="Expression_0" language="spel">
+                    <body>
+                        <![CDATA[Inspection_Required.Inspection_Required_Status== "Yes"]]>
+                    </body>
+                </condition>
+            </ifPart>
+            <planItemOnPart id="_jryUr_126" name="PlanItemOnPart_2" sourceRef="pi__jryUr_15">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__jryUr_15" name="Sentry_15">
+            <planItemOnPart id="_jryUr_91" name="PlanItemOnPart_15" sourceRef="pi_pt__jryUr_0">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <humanTask id="ht__jryUr_0" name="Register_Arrival" isBlocking="true">
+            <inputs id="_jryUr_96" name="Register_Arrival" bindingRef="_jryUr_5"/>
+            <inputs id="_jryUr_98" name="Assignee"/>
+            <outputs id="_jryUr_184" name="Arrival_Status" bindingRef="_jryUr_1"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="RegisterArrival.humantask">
+                    <parameterMapping id="_jryUr_97" sourceRef="_jryUr_96" targetRef="_kgVX_Register_Arrival"/>
+                    <parameterMapping id="_jryUr_102" sourceRef="_jryUr_98" targetRef="_L2bN_Assignee"/>
+                    <parameterMapping id="_jryUr_185" sourceRef="_whwf_Arrival_Status" targetRef="_jryUr_184"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__jryUr_1" name="Check Paperwork Available from Driver" isBlocking="true">
+            <inputs id="_jryUr_36" name="Register_Arrival" bindingRef="_jryUr_5"/>
+            <inputs id="_jryUr_38" name="Paperwork_Available_Response"/>
+            <outputs id="_jryUr_75" name="Paperwork_Available_Response" bindingRef="_jryUr_35"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="CheckPaperworkAvailablefromDriver.humantask">
+                    <parameterMapping id="_jryUr_37" sourceRef="_jryUr_36" targetRef="_mQbm_Register_Arrival"/>
+                    <parameterMapping id="_jryUr_84" sourceRef="_WVKU_Paperwork_Available_Response" targetRef="_jryUr_75"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__jryUr_5" name="Receive Goods" isBlocking="true">
+            <inputs id="_jryUr_111" name="Purchase_Details" bindingRef="_jryUr_32"/>
+            <inputs id="_jryUr_113" name="Supplier_Details" bindingRef="_jryUr_58"/>
+            <inputs id="_jryUr_155" name="Receipt_Details" bindingRef="_jryUr_50"/>
+            <inputs id="_jryUr_159" name="Location" bindingRef="_jryUr_52"/>
+            <outputs id="_jryUr_176" name="Receipt_Details" bindingRef="_jryUr_50"/>
+            <outputs id="_jryUr_178" name="Location" bindingRef="_jryUr_52"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="ReceiveGoods.humantask">
+                    <parameterMapping id="_jryUr_112" sourceRef="_jryUr_111" targetRef="_8CFG_Purchase_Details"/>
+                    <parameterMapping id="_jryUr_114" sourceRef="_jryUr_113" targetRef="_tZOD_Supplier_Details"/>
+                    <parameterMapping id="_jryUr_156" sourceRef="_jryUr_155" targetRef="_fGJG_Receipt_Details"/>
+                    <parameterMapping id="_jryUr_172" sourceRef="_jryUr_159" targetRef="_gly8_Location"/>
+                    <parameterMapping id="_jryUr_177" sourceRef="_6ZBf_Receipt_Details" targetRef="_jryUr_176"/>
+                    <parameterMapping id="_jryUr_179" sourceRef="_sbz4_Location" targetRef="_jryUr_178"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__jryUr_6" name="Check if inspection required" isBlocking="true">
+            <inputs id="_jryUr_115" name="Receipt_Details" bindingRef="_jryUr_50"/>
+            <inputs id="_jryUr_117" name="Location" bindingRef="_jryUr_52"/>
+            <outputs id="_jryUr_128" name="Inspection_Required" bindingRef="_jryUr_49"/>
+            <outputs id="_jryUr_143" name="Receipt_Details" bindingRef="_jryUr_50"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="Checkifinspectionrequired.humantask">
+                    <parameterMapping id="_jryUr_116" sourceRef="_jryUr_115" targetRef="_vQLs_Receipt_Details"/>
+                    <parameterMapping id="_jryUr_118" sourceRef="_jryUr_117" targetRef="_jicZ_Location"/>
+                    <parameterMapping id="_jryUr_142" sourceRef="_1PqV_Inspection_Required" targetRef="_jryUr_128"/>
+                    <parameterMapping id="_jryUr_144" sourceRef="_hukE_Receipt_Details" targetRef="_jryUr_143"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__jryUr_7" name="Inspect Goods" isBlocking="true">
+            <inputs id="_jryUr_21" name="Receipt_Details" bindingRef="_jryUr_50"/>
+            <inputs id="_jryUr_134" name="Purchase_Details" bindingRef="_jryUr_32"/>
+            <inputs id="_jryUr_136" name="Location" bindingRef="_jryUr_52"/>
+            <inputs id="_jryUr_138" name="Supplier_Details" bindingRef="_jryUr_58"/>
+            <outputs id="_jryUr_78" name="Receipt_Details" bindingRef="_jryUr_50"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="InspectGoods.humantask">
+                    <parameterMapping id="_jryUr_120" sourceRef="_jryUr_21" targetRef="_dREW_Receipt_Details"/>
+                    <parameterMapping id="_jryUr_135" sourceRef="_jryUr_134" targetRef="_UX8g_Purchase_Details"/>
+                    <parameterMapping id="_jryUr_137" sourceRef="_jryUr_136" targetRef="_F2bu_Location"/>
+                    <parameterMapping id="_jryUr_139" sourceRef="_jryUr_138" targetRef="_eQc3_Supplier_Details"/>
+                    <parameterMapping id="_jryUr_76" sourceRef="_uMMz_Receipt_Details" targetRef="_jryUr_78"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__jryUr_8" name="Register inspection  result" isBlocking="true">
+            <inputs id="_jryUr_153" name="Inspection_Status" bindingRef="_jryUr_121"/>
+            <outputs id="_jryUr_157" name="Inspection_Status" bindingRef="_jryUr_121"/>
+            <outputs id="_jryUr_187" name="Receipt_Details" bindingRef="_jryUr_50"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="Registerinspectionresult.humantask">
+                    <parameterMapping id="_jryUr_154" sourceRef="_jryUr_153" targetRef="_1kxr_Inspection_Status"/>
+                    <parameterMapping id="_jryUr_158" sourceRef="_t4bq_Inspection_Status" targetRef="_jryUr_157"/>
+                    <parameterMapping id="_jryUr_186" sourceRef="_SbmW_Receipt_Details" targetRef="_jryUr_187"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__jryUr_9" name="Reject Goods" isBlocking="true">
+            <inputs id="_jryUr_31" name="Receipt_Details" bindingRef="_jryUr_50"/>
+            <inputs id="_jryUr_34" name="Purchase_Details" bindingRef="_jryUr_32"/>
+            <inputs id="_jryUr_44" name="Supplier_Details" bindingRef="_jryUr_58"/>
+            <inputs id="_jryUr_85" name="Location" bindingRef="_jryUr_52"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="RejectGoods.humantask">
+                    <parameterMapping id="_jryUr_33" sourceRef="_jryUr_31" targetRef="_fmw2_Receipt_Details"/>
+                    <parameterMapping id="_jryUr_40" sourceRef="_jryUr_34" targetRef="_x6If_Purchase_Details"/>
+                    <parameterMapping id="_jryUr_79" sourceRef="_jryUr_44" targetRef="_6Pvd_Supplier_Details"/>
+                    <parameterMapping id="_jryUr_86" sourceRef="_jryUr_85" targetRef="_Jd1K_Location"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__jryUr_10" name="Determine Storage Location" isBlocking="true">
+            <inputs id="_jryUr_41" name="Project_Goods" bindingRef="_jryUr_129"/>
+            <inputs id="_jryUr_189" name="Receipt_Details" bindingRef="_jryUr_50"/>
+            <outputs id="_jryUr_43" name="Project_Goods" bindingRef="_jryUr_129"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="DetermineStorageLocation.humantask">
+                    <parameterMapping id="_jryUr_42" sourceRef="_jryUr_41" targetRef="_ktkZ_Project_Goods"/>
+                    <parameterMapping id="_jryUr_51" sourceRef="_ilCc_Project_Goods" targetRef="_jryUr_43"/>
+                    <parameterMapping id="_jryUr_27" sourceRef="_jryUr_189" targetRef="_eDlN_Receipt_Details"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__jryUr_11" name="Put away goods to project location" isBlocking="true">
+            <inputs id="_jryUr_67" name="Put_Away_Advice_Number" bindingRef="_jryUr_173"/>
+            <inputs id="_jryUr_69" name="Receipt_Details" bindingRef="_jryUr_50"/>
+            <inputs id="_jryUr_72" name="Purchase_Details" bindingRef="_jryUr_32"/>
+            <inputs id="_jryUr_74" name="Supplier" bindingRef="_jryUr_58"/>
+            <inputs id="_jryUr_77" name="Location" bindingRef="_jryUr_52"/>
+            <inputs id="_jryUr_93" name="Supplier_Details" bindingRef="_jryUr_58"/>
+            <outputs id="_jryUr_82" name="Put_Away_Advice_Number" bindingRef="_jryUr_173"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="Putawaygoodstoprojectlocation.humantask">
+                    <parameterMapping id="_jryUr_68" sourceRef="_jryUr_67" targetRef="_eLwm_Put_Away_Advice_Number"/>
+                    <parameterMapping id="_jryUr_71" sourceRef="_jryUr_69" targetRef="_bLiB_Receipt_Details"/>
+                    <parameterMapping id="_jryUr_73" sourceRef="_jryUr_72" targetRef="_makf_Purchase_Details"/>
+                    <parameterMapping id="_jryUr_81" sourceRef="_jryUr_77" targetRef="_wEm7_Location"/>
+                    <parameterMapping id="_jryUr_83" sourceRef="_Q4kv_Put_Away_Advice_Number" targetRef="_jryUr_82"/>
+                    <parameterMapping id="_jryUr_92" sourceRef="_jryUr_93" targetRef="_QM2U_Supplier_Details"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__jryUr_12" name="Put away goods to anonymous storage location" isBlocking="true">
+            <inputs id="_jryUr_53" name="Put_Away_Advice_Number" bindingRef="_jryUr_173"/>
+            <inputs id="_jryUr_55" name="Receipt_Details" bindingRef="_jryUr_50"/>
+            <inputs id="_jryUr_59" name="Location" bindingRef="_jryUr_52"/>
+            <inputs id="_jryUr_61" name="Purchase_Details" bindingRef="_jryUr_32"/>
+            <inputs id="_jryUr_63" name="Supplier_Details" bindingRef="_jryUr_58"/>
+            <outputs id="_jryUr_65" name="Put_Away_Advice_Number" bindingRef="_jryUr_173"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="Putawaygoodstoanonymousstoragelocation.humantask">
+                    <parameterMapping id="_jryUr_54" sourceRef="_jryUr_53" targetRef="_49Ho_Put_Away_Advice_Number"/>
+                    <parameterMapping id="_jryUr_56" sourceRef="_jryUr_55" targetRef="_aFua_Receipt_Details"/>
+                    <parameterMapping id="_jryUr_60" sourceRef="_jryUr_59" targetRef="_oKsB_Location"/>
+                    <parameterMapping id="_jryUr_62" sourceRef="_jryUr_61" targetRef="_u3Bf_Purchase_Details"/>
+                    <parameterMapping id="_jryUr_64" sourceRef="_jryUr_63" targetRef="_LEGq_Supplier_Details"/>
+                    <parameterMapping id="_jryUr_66" sourceRef="_Q0nJ_Put_Away_Advice_Number" targetRef="_jryUr_65"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__jryUr_2" name="Register Shipment Receipt" isBlocking="true">
+            <inputs id="_jryUr_103" name="Purchase_Details" bindingRef="_jryUr_32"/>
+            <inputs id="_jryUr_105" name="Supplier_Details" bindingRef="_jryUr_58"/>
+            <outputs id="_jryUr_107" name="Purchase_Details" bindingRef="_jryUr_32"/>
+            <outputs id="_jryUr_109" name="Supplier_Details" bindingRef="_jryUr_58"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="RegisterShipmentReceipt.humantask">
+                    <parameterMapping id="_jryUr_104" sourceRef="_jryUr_103" targetRef="_tnim_Purchase_Details"/>
+                    <parameterMapping id="_jryUr_106" sourceRef="_jryUr_105" targetRef="_bdPx_Supplier_Details"/>
+                    <parameterMapping id="_jryUr_108" sourceRef="_gaxV_Purchase_Details" targetRef="_jryUr_107"/>
+                    <parameterMapping id="_jryUr_110" sourceRef="_ZkOU_Supplier_Details" targetRef="_jryUr_109"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__jryUr_3" name="Call Supplier and confirm Paperwork receipt via Email" isBlocking="true">
+            <inputs id="_jryUr_161" name="Parameter_0"/>
+            <inputs id="_jryUr_167" name="Paperwork_Available_Response" bindingRef="_jryUr_35"/>
+            <outputs id="_jryUr_163" name="Paperwork_Available_Response" bindingRef="_jryUr_35"/>
+            <outputs id="_jryUr_165" name="Register_Arrival" bindingRef="_jryUr_5"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="CallSupplierandconfirmPaperworkreceiptviaEmail.humantask">
+                    <parameterMapping id="_jryUr_164" sourceRef="_LuJU_Message" targetRef="_jryUr_163"/>
+                    <parameterMapping id="_jryUr_166" sourceRef="_n420_Register_Arrival" targetRef="_jryUr_165"/>
+                    <parameterMapping id="_jryUr_162" sourceRef="_jryUr_167" targetRef="_NGE6_Register_Arrival"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <processTask id="pt__jryUr_0" name="Get Supplier Contact Number from ERP" isBlocking="true" processRef="GetSupplierContactNumberfromERP.process">
+            <inputs id="_jryUr_80" name="Register_Arrival" bindingRef="_jryUr_5"/>
+            <outputs id="_jryUr_151" name="Register_Arrival" bindingRef="_jryUr_5"/>
+            <outputs id="_jryUr_150" name="Supplier_Phone" bindingRef="_jryUr_57"/>
+            <parameterMapping id="_jryUr_145" sourceRef="_jryUr_80" targetRef="_XiEI_Register_Arrival">
+                <transformation id="_jryUr_168" name="Expression_4" language="spel">
+                    <body>
+                        <![CDATA[Register_Arrival.Supplier_Name]]>
+                    </body>
+                </transformation>
+            </parameterMapping>
+            <parameterMapping id="_jryUr_152" sourceRef="_qDkF_Register_Arrival" targetRef="_jryUr_151"/>
+            <parameterMapping id="_jryUr_149" sourceRef="_GLho_Supplier_Phone" targetRef="_jryUr_150"/>
+        </processTask>
+        <processTask id="pt__jryUr_1" name="Notify Email" isBlocking="true" processRef="Notify_Complete.process">
+            <inputs id="_jryUr_89" name="Register_Arrival" bindingRef="_jryUr_5"/>
+            <outputs id="_jryUr_95" name="Supplier_Phone" bindingRef="_jryUr_57"/>
+            <parameterMapping id="_jryUr_88" sourceRef="_jryUr_89" targetRef="_3Qcs_Register_Arrival">
+                <transformation id="_jryUr_90" name="Expression_9" language="spel">
+                    <body>
+                        <![CDATA[Register_Arrival.Supplier_Name]]>
+                    </body>
+                </transformation>
+            </parameterMapping>
+            <parameterMapping id="_jryUr_94" sourceRef="_d8xo_Supplier_Phone" targetRef="_jryUr_95"/>
+        </processTask>
+        <milestone id="ms__jryUr_0" name="Arrival Registered"/>
+        <stage id="_jryUr_8" name="Arrival" autoComplete="true">
+            <planItem id="pi_ht__jryUr_1" name="Check Paperwork Available from Driver" definitionRef="ht__jryUr_1" entryCriteriaRefs="crit__jryUr_1"/>
+            <planItem id="pi_ht__jryUr_2" name="Register Shipment Receipt" definitionRef="ht__jryUr_2" entryCriteriaRefs="crit__jryUr_12 crit__jryUr_13"/>
+            <planItem id="pi_pt__jryUr_0" name="Get Supplier Contact Number from ERP" definitionRef="pt__jryUr_0" entryCriteriaRefs="crit__jryUr_2"/>
+            <planItem id="pi_ht__jryUr_3" name="Call Supplier and confirm Paperwork receipt via Email" definitionRef="ht__jryUr_3" entryCriteriaRefs="crit__jryUr_11"/>
+            <sentry id="crit__jryUr_1" name="Sentry_1">
+                <planItemOnPart id="_jryUr_29" name="PlanItemOnPart_1" sourceRef="pi_ms__jryUr_0">
+                    <standardEvent>occur</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <sentry id="crit__jryUr_12" name="Sentry_12">
+                <ifPart id="_jryUr_174" name="IfPart_2" contextRef="_jryUr_35">
+                    <condition id="_jryUr_175" name="Expression_3" language="spel">
+                        <body>
+                            <![CDATA[Paperwork_Available_Response.Paperwork_Available_Response_Status =="Yes"]]>
+                        </body>
+                    </condition>
+                </ifPart>
+                <planItemOnPart id="_jryUr_141" name="PlanItemOnPart_13" sourceRef="pi_ht__jryUr_1">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <sentry id="crit__jryUr_11" name="Sentry_11">
+                <planItemOnPart id="_jryUr_160" name="PlanItemOnPart_12" sourceRef="pi_pt__jryUr_0">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <sentry id="crit__jryUr_2" name="Sentry_2">
+                <ifPart id="_jryUr_147" name="IfPart_3" contextRef="_jryUr_35">
+                    <condition id="_jryUr_148" name="Expression_2" language="spel">
+                        <body>
+                            <![CDATA[Paperwork_Available_Response.Paperwork_Available_Response_Status =="No"]]>
+                        </body>
+                    </condition>
+                </ifPart>
+                <planItemOnPart id="_jryUr_146" name="PlanItemOnPart_4" sourceRef="pi_ht__jryUr_1">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <sentry id="crit__jryUr_13" name="Sentry_13">
+                <ifPart id="_jryUr_170" name="IfPart_4">
+                    <condition id="_jryUr_171" name="Expression_5" language="spel">
+                        <body>
+                            <![CDATA[Paperwork_Available_Response.Paperwork_Available_Response_Status =="Yes"]]>
+                        </body>
+                    </condition>
+                </ifPart>
+                <planItemOnPart id="_jryUr_169" name="PlanItemOnPart_14" sourceRef="pi_ht__jryUr_3">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+        </stage>
+        <stage id="_jryUr_15" name="Receiving" autoComplete="true">
+            <planItem id="pi_ht__jryUr_5" name="Receive Goods" definitionRef="ht__jryUr_5" entryCriteriaRefs="crit__jryUr_14"/>
+            <planItem id="pi_ht__jryUr_6" name="Check if inspection required" definitionRef="ht__jryUr_6" entryCriteriaRefs="crit__jryUr_3"/>
+            <sentry id="crit__jryUr_3" name="Sentry_3">
+                <planItemOnPart id="_jryUr_10" name="PlanItemOnPart_3" sourceRef="pi_ht__jryUr_5">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <sentry id="crit__jryUr_14" name="Sentry_14">
+                <planItemOnPart id="_jryUr_39" name="PlanItemOnPart_10" sourceRef="pi__jryUr_8">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+        </stage>
+        <stage id="_jryUr_19" name="Inspection" autoComplete="true">
+            <planItem id="pi_ht__jryUr_9" name="Reject Goods" definitionRef="ht__jryUr_9" entryCriteriaRefs="crit__jryUr_6"/>
+            <planItem id="pi_ht__jryUr_8" name="Register inspection  result" definitionRef="ht__jryUr_8" entryCriteriaRefs="crit__jryUr_5"/>
+            <planItem id="pi_ht__jryUr_7" name="Inspect Goods" definitionRef="ht__jryUr_7"/>
+            <sentry id="crit__jryUr_5" name="Sentry_5">
+                <ifPart id="_jryUr_100" name="IfPart_5" contextRef="_jryUr_50">
+                    <condition id="_jryUr_101" name="Expression_6" language="spel">
+                        <body>
+                            <![CDATA[Receipt_Details.Receipt_Status == "Inspected"]]>
+                        </body>
+                    </condition>
+                </ifPart>
+                <planItemOnPart id="_jryUr_45" name="PlanItemOnPart_5" sourceRef="pi_ht__jryUr_7">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <sentry id="crit__jryUr_6" name="Sentry_6">
+                <ifPart id="_jryUr_122" name="IfPart_6" contextRef="_jryUr_121">
+                    <condition id="_jryUr_123" name="Expression_7" language="spel">
+                        <body>
+                            <![CDATA[Inspection_Status.Inspection_Status == "No"]]>
+                        </body>
+                    </condition>
+                </ifPart>
+                <planItemOnPart id="_jryUr_46" name="PlanItemOnPart_6" sourceRef="pi_ht__jryUr_8">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+        </stage>
+        <stage id="_jryUr_24" name="Storage" autoComplete="true">
+            <planItem id="pi_ht__jryUr_10" name="Determine Storage Location" definitionRef="ht__jryUr_10" entryCriteriaRefs="crit__jryUr_7 crit__jryUr_4"/>
+            <planItem id="pi_ht__jryUr_12" name="Put away goods to anonymous storage location" definitionRef="ht__jryUr_12" entryCriteriaRefs="crit__jryUr_9"/>
+            <planItem id="pi_ht__jryUr_11" name="Put away goods to project location" definitionRef="ht__jryUr_11" entryCriteriaRefs="crit__jryUr_8"/>
+            <sentry id="crit__jryUr_7" name="Sentry_7">
+                <ifPart id="_jryUr_124" name="IfPart_7" contextRef="_jryUr_121">
+                    <condition id="_jryUr_125" name="Expression_8" language="spel">
+                        <body>
+                            <![CDATA[Inspection_Status.Inspection_Status == "Yes"]]>
+                        </body>
+                    </condition>
+                </ifPart>
+                <planItemOnPart id="_jryUr_47" name="PlanItemOnPart_7" sourceRef="pi_ht__jryUr_8">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <sentry id="crit__jryUr_8" name="Sentry_8">
+                <ifPart id="_jryUr_132" name="IfPart_10" contextRef="_jryUr_129">
+                    <condition id="_jryUr_133" name="Expression_11" language="spel">
+                        <body>
+                            <![CDATA[Project_Goods.Project_Goods == "Yes"]]>
+                        </body>
+                    </condition>
+                </ifPart>
+                <planItemOnPart id="_jryUr_48" name="PlanItemOnPart_8" sourceRef="pi_ht__jryUr_10">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <sentry id="crit__jryUr_9" name="Sentry_9">
+                <ifPart id="_jryUr_130" name="IfPart_9" contextRef="_jryUr_129">
+                    <condition id="_jryUr_131" name="Expression_10" language="spel">
+                        <body>
+                            <![CDATA[Project_Goods.Project_Goods == "NO"]]>
+                        </body>
+                    </condition>
+                </ifPart>
+                <planItemOnPart id="_jryUr_70" name="PlanItemOnPart_9" sourceRef="pi_ht__jryUr_10">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+            <sentry id="crit__jryUr_4" name="Sentry_4">
+                <ifPart id="_jryUr_99" name="IfPart_1" contextRef="_jryUr_49">
+                    <condition id="_jryUr_140" name="Expression_1" language="spel">
+                        <body>
+                            <![CDATA[Inspection_Required.Inspection_Required_Status== "No"]]>
+                        </body>
+                    </condition>
+                </ifPart>
+                <planItemOnPart id="_jryUr_9" name="PlanItemOnPart_11" sourceRef="pi__jryUr_15">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+        </stage>
+    </casePlanModel>
+    <caseRoles id="_jryUr_180" name="PurchaseClerk" description="Purchasing"/>
+    <caseRoles id="_jryUr_181" name="WarehousingClerk" description="Warehousing"/>
+    <caseRoles id="_jryUr_182" name="QCClerk" description="QC Clerk"/>
+    <caseRoles id="_jryUr_183" name="Requestor" description="Requestor"/>
+    <input id="_jryUr_3" name="Register_Arrival" bindingRef="_jryUr_5"/>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+  "schema":{
+    "title":"Register_Arrival",
+    "type": "object",
+   
+    "properties":{
+      "Register_Arrival":{
+        "title": "Register_Arrival",
+        "type": "object",
+        "properties":{
+          "Truck_Number":{
+            "title": "Truck_Number",
+            "type": "string",
+            "description": "Truck_Number"
+          },
+          "Driver_Name": {
+            "title": "Driver_Name",
+            "type": "string",
+            "description": "Driver_Name"
+          },
+           "Driver_ID":{
+            "title": "Driver_ID",
+            "type": "string",
+            "description": "Driver_ID"
+          },
+           "Driver_Details":{
+            "title": "Driver_Details",
+            "type": "string",
+            "description": "Driver_Details"
+          },
+           "Supplier_Name":{
+            "title": "Supplier_Name",
+            "type": "string",
+            "description": "Supplier_Name"
+          }
+          }
+      }
+    }
+  }
+}</cafienne:start-case-model>
+    </extensionElements>
+</case>

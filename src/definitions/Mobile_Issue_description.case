@@ -1,0 +1,107 @@
+<case id="PhoneManagemnetSystem.case" name="PhoneManagemnetSystem" description="PhoneManagemnetSystem" guid="_j6e5Q">
+    <caseFileModel>
+        <caseFileItem id="_j6e5Q_6" name="Verification_Response" multiplicity="ExactlyOne" definitionRef="verification_response.cfid"/>
+        <caseFileItem id="_j6e5Q_7" name="Incident_Response" multiplicity="ExactlyOne" definitionRef="incident_NaN.cfid"/>
+        <caseFileItem id="_j6e5Q_5" name="User" multiplicity="ExactlyOne" definitionRef="user.cfid"/>
+        <caseFileItem id="_j6e5Q_8" name="UserResponse" multiplicity="ExactlyOne" definitionRef="userresponse.cfid"/>
+        <caseFileItem id="_j6e5Q_15" name="Services" multiplicity="ExactlyOne" definitionRef="services.cfid"/>
+        <caseFileItem id="_j6e5Q_36" name="Issue" multiplicity="ExactlyOne" definitionRef="issue.cfid"/>
+    </caseFileModel>
+    <casePlanModel id="cm__j6e5Q_0" name="PhoneManagemnetSystem" autoComplete="true">
+        <planItem id="pi__j6e5Q_0" name="Verify And Select Services" definitionRef="_j6e5Q_0"/>
+        <planItem id="pi__j6e5Q_24" name="Phone" definitionRef="_j6e5Q_24" entryCriteriaRefs="crit__j6e5Q_1"/>
+        <planItem id="pi__j6e5Q_26" name="Mobile" definitionRef="_j6e5Q_26" entryCriteriaRefs="crit__j6e5Q_2"/>
+        <planItem id="pi__j6e5Q_28" name="DTH" definitionRef="_j6e5Q_28" entryCriteriaRefs="crit__j6e5Q_3"/>
+        <sentry id="crit__j6e5Q_1" name="Sentry_1">
+            <planItemOnPart id="_j6e5Q_33" name="PlanItemOnPart_1" sourceRef="pi_ht__j6e5Q_1">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_2" name="Sentry_2">
+            <planItemOnPart id="_j6e5Q_34" name="PlanItemOnPart_2" sourceRef="pi_ht__j6e5Q_1">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <sentry id="crit__j6e5Q_3" name="Sentry_3">
+            <planItemOnPart id="_j6e5Q_35" name="PlanItemOnPart_3" sourceRef="pi_ht__j6e5Q_1">
+                <standardEvent>complete</standardEvent>
+            </planItemOnPart>
+        </sentry>
+        <humanTask id="ht__j6e5Q_0" name="Verify_User" isBlocking="true">
+            <inputs id="_j6e5Q_3" name="User" bindingRef="_j6e5Q_5"/>
+            <outputs id="_j6e5Q_11" name="User" bindingRef="_j6e5Q_5"/>
+            <outputs id="_j6e5Q_14" name="Verification_Response" bindingRef="_j6e5Q_6"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="Verify_user_details.humantask">
+                    <parameterMapping id="_j6e5Q_4" sourceRef="_j6e5Q_3" targetRef="_U13A_User"/>
+                    <parameterMapping id="_j6e5Q_10" sourceRef="_2eH4_UserResponse" targetRef="_j6e5Q_14"/>
+                    <parameterMapping id="_j6e5Q_12" sourceRef="_Pmex_User" targetRef="_j6e5Q_11"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__j6e5Q_1" name="Select_Services" isBlocking="true">
+            <inputs id="_j6e5Q_16" name="User" bindingRef="_j6e5Q_5"/>
+            <outputs id="_j6e5Q_18" name="Services" bindingRef="_j6e5Q_15"/>
+            <outputs id="_j6e5Q_20" name="User" bindingRef="_j6e5Q_5"/>
+            <extensionElements mustUnderstand="false">
+                <cafienne:implementation xmlns:cafienne="org.cafienne" humanTaskRef="Select_Services.humantask">
+                    <parameterMapping id="_j6e5Q_17" sourceRef="_j6e5Q_16" targetRef="_87IV_User"/>
+                    <parameterMapping id="_j6e5Q_19" sourceRef="_Z7nw_Services" targetRef="_j6e5Q_18">
+                        <transformation id="_j6e5Q_22" name="Expression_0" language="spel">
+                            <body>
+                                <![CDATA[Services.Type]]>
+                            </body>
+                        </transformation>
+                    </parameterMapping>
+                    <parameterMapping id="_j6e5Q_21" sourceRef="_PTmm_User" targetRef="_j6e5Q_20"/>
+                </cafienne:implementation>
+            </extensionElements>
+        </humanTask>
+        <humanTask id="ht__j6e5Q_3" name="Select Issue" isBlocking="true"/>
+        <humanTask id="ht__j6e5Q_4" name="Select Issue" isBlocking="true"/>
+        <stage id="_j6e5Q_0" name="Verify And Select Services" autoComplete="true">
+            <planItem id="pi_ht__j6e5Q_0" name="Verify_User" definitionRef="ht__j6e5Q_0"/>
+            <planItem id="pi_ht__j6e5Q_1" name="Select_Services" definitionRef="ht__j6e5Q_1" entryCriteriaRefs="crit__j6e5Q_0"/>
+            <sentry id="crit__j6e5Q_0" name="Sentry_0">
+                <planItemOnPart id="_j6e5Q_23" name="PlanItemOnPart_0" sourceRef="pi_ht__j6e5Q_0">
+                    <standardEvent>complete</standardEvent>
+                </planItemOnPart>
+            </sentry>
+        </stage>
+        <stage id="_j6e5Q_24" name="Phone" autoComplete="true"/>
+        <stage id="_j6e5Q_26" name="Mobile" autoComplete="true">
+            <planItem id="pi_ht__j6e5Q_3" name="Select Issue" definitionRef="ht__j6e5Q_3"/>
+        </stage>
+        <stage id="_j6e5Q_28" name="DTH" autoComplete="true">
+            <planItem id="pi_ht__j6e5Q_4" name="Select Issue" definitionRef="ht__j6e5Q_4"/>
+        </stage>
+    </casePlanModel>
+    <input id="_j6e5Q_13" name="User" bindingRef="_j6e5Q_5"/>
+    <extensionElements mustUnderstand="false">
+        <cafienne:start-case-model xmlns:cafienne="org.cafienne">{
+  "schema": {
+    "title": "User",
+    "type": "object",
+   
+    "properties": {
+      "User": {
+        "title": "User Details",
+        "type": "object",
+        "properties": {
+          "UserName": {
+            "title": "User Name",
+            "type": "string",
+            "description": "User Name"
+          },
+          "PhoneNumber": {
+            "title": "Phone Number",
+            "type": "string",
+            "description": "Phone Number"
+          }
+      }
+  }
+}
+}
+}</cafienne:start-case-model>
+    </extensionElements>
+</case>

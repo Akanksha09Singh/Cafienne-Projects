@@ -1,0 +1,54 @@
+<CMMNDI>
+    <CMMNDiagram>
+        <CMMNShape cmmnElementRef="cm__j6e5Q_0" name="PhoneManagemnetSystem">
+            <Bounds x="0" y="20" width="810" height="790"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi__j6e5Q_0" name="Verify And Select Services">
+            <Bounds x="60" y="130" width="290" height="170"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__j6e5Q_0" name="Verify_User">
+            <Bounds x="100" y="170" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__j6e5Q_1" name="Select_Services">
+            <Bounds x="230" y="220" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__j6e5Q_0" name="Sentry_0">
+            <Bounds x="224" y="240" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi__j6e5Q_24" name="Phone">
+            <Bounds x="100" y="410" width="180" height="140"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi__j6e5Q_26" name="Mobile">
+            <Bounds x="330" y="410" width="150" height="140"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi__j6e5Q_28" name="DTH">
+            <Bounds x="520" y="410" width="160" height="140"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__j6e5Q_3" name="Select Issue">
+            <Bounds x="350" y="460" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="pi_ht__j6e5Q_4" name="Select Issue">
+            <Bounds x="570" y="460" width="100" height="60"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__j6e5Q_1" name="Sentry_1">
+            <Bounds x="184" y="400" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__j6e5Q_2" name="Sentry_2">
+            <Bounds x="414" y="400" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNShape cmmnElementRef="crit__j6e5Q_3" name="Sentry_3">
+            <Bounds x="614" y="400" width="12" height="20"/>
+        </CMMNShape>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__j6e5Q_0" targetCMMNElementRef="crit__j6e5Q_0"/>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__j6e5Q_1" targetCMMNElementRef="crit__j6e5Q_1">
+            <waypoint x="270" y="370"/>
+            <waypoint x="190" y="370"/>
+        </CMMNEdge>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__j6e5Q_1" targetCMMNElementRef="crit__j6e5Q_2">
+            <waypoint x="420" y="270"/>
+        </CMMNEdge>
+        <CMMNEdge sourceCMMNElementRef="pi_ht__j6e5Q_1" targetCMMNElementRef="crit__j6e5Q_3">
+            <waypoint x="620" y="250"/>
+        </CMMNEdge>
+    </CMMNDiagram>
+</CMMNDI>
